@@ -20,24 +20,23 @@ function App() {
 
    const addNote = (note) => {
       const newNote = { ...note, id: crypto.randomUUID() };
-      const newNoteList = [...noteList, newNote];
-      setNoteList(newNoteList);
+      setNoteList((noteList) => [...noteList, newNote]);
    };
 
    const removeNote = (removingId) => {
-      const newNoteList = noteList.filter((note) => note.id !== removingId);
-      setNoteList(newNoteList);
+      setNoteList((noteList) => noteList.filter((note) => note.id !== removingId));
    };
 
    const editNote = (editNote, editingId) => {
-      const newNoteList = noteList.map((note) => {
-         if (note.id === editingId) {
-            return { ...note, ...editNote };
-         } else {
-            return note;
-         }
-      });
-      setNoteList(newNoteList);
+      setNoteList((noteList) =>
+         noteList.map((note) => {
+            if (note.id === editingId) {
+               return { ...note, ...editNote };
+            } else {
+               return note;
+            }
+         })
+      );
    };
 
    return (
