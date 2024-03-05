@@ -23,11 +23,14 @@ function App() {
       const newNoteList = [...noteList, newNote];
       setNoteList(newNoteList);
    };
+   /* ADIÇÃO - spread operator para pegar a lista anterior e adicionar novos itens */
+   /* randomUUID - para ID único */
 
    const removeNote = (removingId) => {
       const newNoteList = noteList.filter((note) => note.id !== removingId);
       setNoteList(newNoteList);
    };
+   /* REMOÇÃO - está retornando todos os itens com ID diferente do removing */
 
    const editNote = (editNote, editingId) => {
       const newNoteList = noteList.map((note) => {
@@ -39,6 +42,7 @@ function App() {
       });
       setNoteList(newNoteList);
    };
+   /* para atualização da lista */
 
    return (
       <>
